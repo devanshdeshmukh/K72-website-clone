@@ -12,4 +12,3 @@ const HomeHeroText = () => {
 }
 
 export default HomeHeroText
-//37:27

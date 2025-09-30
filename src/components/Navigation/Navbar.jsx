@@ -13,8 +13,14 @@ const Navbar = () => {
           </svg>
         </div>
       </div>
-      <div className='h-14 bg-black relative w-[16vw]'>
-        <div ref={navGreenRef} className='bg-green-500 tran absolute top-0 h-0 w-full'></div>
+      <div onMouseEnter={()=>{
+        navGreenRef.current.style.height = '100%'
+      }} 
+      onMouseLeave={()=>{
+        navGreenRef.current.style.height = '0%'
+      }}
+      className='h-12 bg-black relative w-[16vw]'>
+        <div ref={navGreenRef} className='bg-[#D2FD50] transition-all absolute top-0 h-0 w-full'></div>
         <div className='relative'></div>
       </div>
     </div>
@@ -22,4 +28,4 @@ const Navbar = () => {
 }
 
 export default Navbar
-//1:55:35
+//2:10:21

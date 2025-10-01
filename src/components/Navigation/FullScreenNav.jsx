@@ -1,9 +1,37 @@
-import React from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import React, { useRef } from 'react'
 
 const FullScreenNav = () => {
+  const fullNavLinkRef = useRef(null)
+
+    useGSAP(function () {
+    const tl = gsap.timeline()  
+    tl.from('.stairing', {
+      delay:1,
+      height: 0,
+      stagger: {
+        amount: -0.25 
+      }
+    }) 
+    tl.from(fullNavLinkRef.current,{
+      opacity:0
+    })
+  })
+
   return (
-    <div id='fullscreennav' className='text-white overflow-hidden h-screen w-full absolute bg-black'>
-      <div className="flex w-full justify-between p-3 items-start">
+    <div id='fullscreennav' className='text-white overflow-hidden h-screen w-full absolute'>
+      <div className='h-screen w-full fixed'>
+          <div className='h-full w-full flex'>
+            <div className='stairing h-full w-1/5 bg-green-700'></div>
+            <div className='stairing h-full w-1/5 bg-green-700'></div>
+            <div className='stairing h-full w-1/5 bg-green-700'></div>
+            <div className='stairing h-full w-1/5 bg-green-700'></div>
+            <div className='stairing h-full w-1/5 bg-green-700'></div>
+        </div>
+      </div>
+     <div ref={fullNavLinkRef} className='relative'>
+       <div className="flex w-full justify-between p-3 items-start">
         <div className=''>
           <div className='w-30'>
             <svg className='w-full' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 44">
@@ -11,7 +39,7 @@ const FullScreenNav = () => {
             </svg>
           </div>
         </div>
-        <div className='h-22 w-22 relativ'>
+        <div className='h-22 w-22 relativ cursor-pointer'>
           <div className='h-35 w-0.5 -rotate-45 origin-top absolute bg-[#D3FD50]'></div>
           <div className='h-35 w-0.5 right-0 rotate-45 origin-top absolute bg-[#D3FD50]'></div>
         </div>
@@ -86,8 +114,10 @@ const FullScreenNav = () => {
           </div>
         </div>
       </div>
+     </div>
     </div>
   )
 }
 
 export default FullScreenNav
+//2:47:07

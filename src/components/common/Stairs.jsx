@@ -42,7 +42,7 @@ const Stairs = (props) => {
     })
   },[currentPath])
 
-  console.log(props.children);
+  // console.log(props.children);
 
     return (
     <div>

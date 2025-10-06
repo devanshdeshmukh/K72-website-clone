@@ -17,6 +17,13 @@ const FullScreenNav = () => {
     tl.from(fullNavLinkRef.current,{
       opacity:0
     })
+    tl.from('.link',{
+      opacity:0,
+      rotateX:90,
+      stagger: {
+      amount: 0.25 
+      }
+    })
   })
 
   return (
@@ -45,7 +52,7 @@ const FullScreenNav = () => {
         </div>
       </div>
       <div className='py-20'>
-        <div className='link relative border-t-1 border-white'>
+        <div className='link origin-top relative border-t-1 border-white'>
           <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
           <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
             <div className='moveX flex items-center'>
@@ -62,7 +69,7 @@ const FullScreenNav = () => {
             </div>
           </div>
         </div>
-        <div className='link relative border-t-1 border-white'>
+        <div className='link origin-top relative border-t-1 border-white'>
           <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
           <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
             <div className='moveX flex items-center'>
@@ -79,7 +86,7 @@ const FullScreenNav = () => {
             </div>
           </div>
         </div>
-        <div className='link relative border-t-1 border-white'>
+        <div className='link origin-top relative border-t-1 border-white'>
           <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
           <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
             <div className='moveX flex items-center'>
@@ -96,7 +103,7 @@ const FullScreenNav = () => {
             </div>
           </div>
         </div>
-        <div className='link relative border-t-1 border-white'>
+        <div className='link origin-top relative border-t-1 border-white'>
           <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
           <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
             <div className='moveX flex items-center'>

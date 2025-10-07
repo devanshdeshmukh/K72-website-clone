@@ -5,24 +5,20 @@ import { NavbarContext } from '../../context/NavContext'
 
 const FullScreenNav = () => {
   const fullNavLinkRef = useRef(null)
-  const fullScreenNav = useRef(null)
-
+  const fullScreenRef = useRef(null)
 
   const [navOpen, setNavOpen] = useContext(NavbarContext)
-  console.log(navOpen);
+  // console.log(navOpen);
 
-    useGSAP(function () {
+  function gsapAnimation() {
     const tl = gsap.timeline() 
-
     tl.from('.stairing', {
+      delay:0.5,
       height: 0,
       stagger: {
-        amount: -0.25 
+        amount: -0.3
       }
     }) 
-    tl.from(fullNavLinkRef.current,{
-      opacity:0
-    })
     tl.from('.link',{
       opacity:0,
       rotateX:90,
@@ -30,20 +26,26 @@ const FullScreenNav = () => {
       amount: 0.25 
       }
     })
-
-    tl.pause()
-
-    if(navOpen){
-      fullScreenNav.current.style.display = 'block'
-      tl.play()
-    }else{
-    fullScreenNav.current.style.display = 'none'
-      tl.reverse()
-    }
-  },[navOpen])
+    tl.from('.navlink',{
+      opacity:1
+    })
+  }
+  
+    useGSAP(function(){
+      if(navOpen){
+        gsap.to('.fullscreennav',{
+          display:'block'
+        })
+        gsapAnimation()
+      }else{
+        gsap.to('.fullScreennav',{
+          display:'none'
+        })
+      }
+    },[navOpen])
 
   return (
-    <div ref={fullScreenNav} id='fullscreennav' className='text-white overflow-hidden h-screen w-full absolute'>
+    <div ref={fullScreenRef} id='fullscreennav' className='fullscreennav hidden text-white overflow-hidden h-screen w-full z-50 absolute'>
       <div className='h-screen w-full fixed'>
           <div className='h-full w-full flex'>
             <div className='stairing h-full w-1/5 bg-green-700'></div>
@@ -54,7 +56,7 @@ const FullScreenNav = () => {
         </div>
       </div>
      <div ref={fullNavLinkRef} className='relative'>
-       <div className="flex w-full justify-between p-3 items-start">
+       <div className=" navlink flex w-full justify-between p-3 items-start">
         <div className=''>
           <div className='w-30'>
             <svg className='w-full' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 44">
@@ -62,7 +64,9 @@ const FullScreenNav = () => {
             </svg>
           </div>
         </div>
-        <div className='h-22 w-22 relativ cursor-pointer'>
+        <div onClick={()=>{
+          setNavOpen(false)
+        }} className='h-22 w-22 relativ cursor-pointer'>
           <div className='h-35 w-0.5 -rotate-45 origin-top absolute bg-[#D3FD50]'></div>
           <div className='h-35 w-0.5 right-0 rotate-45 origin-top absolute bg-[#D3FD50]'></div>
         </div>

@@ -8,51 +8,75 @@ const FullScreenNav = () => {
   const fullScreenRef = useRef(null)
 
   const [navOpen, setNavOpen] = useContext(NavbarContext)
-  // console.log(navOpen);
 
-  function gsapAnimation() {
-    const tl = gsap.timeline() 
-    tl.from('.stairing', {
-      delay:0.5,
-      height: 0,
-      stagger: {
-        amount: -0.3
-      }
-    }) 
-    tl.from('.link',{
-      opacity:0,
-      rotateX:90,
-      stagger: {
-      amount: 0.25 
-      }
-    })
-    tl.from('.navlink',{
-      opacity:1
-    })
-  }
-  
-    useGSAP(function(){
-      if(navOpen){
-        gsap.to('.fullscreennav',{
-          display:'block'
+
+    function gsapAnimation() {
+        const tl = gsap.timeline()
+        tl.to('.fullscreennav', {
+            display: 'block'
         })
-        gsapAnimation()
-      }else{
-        gsap.to('.fullScreennav',{
-          display:'none'
+        tl.to('.stairing', {
+            delay: 0.2,
+            height: '100%',
+            stagger: {
+                amount: -0.3
+            }
         })
-      }
-    },[navOpen])
+        tl.to('.link', {
+            opacity: 1,
+            rotateX: 0,
+            stagger: {
+                amount: 0.3
+            }
+        })
+        tl.to('.navlink', {
+            opacity: 1
+        })
+    }
+    function gsapAnimationReverse() {
+        const tl = gsap.timeline()
+        tl.to('.link', {
+            opacity: 0,
+            rotateX: 90,
+            stagger: {
+                amount: 0.1
+            }
+        })
+        tl.to('.stairing', {
+            height: 0,
+            stagger: {
+                amount: 0.1
+            }
+        })
+        tl.to('.navlink', {
+            opacity: 0
+        })
+        tl.to('.fullscreennav', {
+            display: 'none',
+        })
+    }
+
+
+    useGSAP(function () {
+        if (navOpen) {
+
+            gsapAnimation()
+        } else {
+
+            gsapAnimationReverse()
+
+        }
+    }, [navOpen])
 
   return (
     <div ref={fullScreenRef} id='fullscreennav' className='fullscreennav hidden text-white overflow-hidden h-screen w-full z-50 absolute'>
       <div className='h-screen w-full fixed'>
           <div className='h-full w-full flex'>
-            <div className='stairing h-full w-1/5 bg-green-700'></div>
-            <div className='stairing h-full w-1/5 bg-green-700'></div>
-            <div className='stairing h-full w-1/5 bg-green-700'></div>
-            <div className='stairing h-full w-1/5 bg-green-700'></div>
-            <div className='stairing h-full w-1/5 bg-green-700'></div>
+            <div className='stairing h-full w-1/5 bg-black'></div>
+            <div className='stairing h-full w-1/5 bg-black'></div>
+            <div className='stairing h-full w-1/5 bg-black'></div>
+            <div className='stairing h-full w-1/5 bg-black'></div>
+            <div className='stairing h-full w-1/5 bg-black'></div>
         </div>
       </div>
      <div ref={fullNavLinkRef} className='relative'>
@@ -66,9 +90,9 @@ const FullScreenNav = () => {
         </div>
         <div onClick={()=>{
           setNavOpen(false)
-        }} className='h-22 w-22 relativ cursor-pointer'>
-          <div className='h-35 w-0.5 -rotate-45 origin-top absolute bg-[#D3FD50]'></div>
-          <div className='h-35 w-0.5 right-0 rotate-45 origin-top absolute bg-[#D3FD50]'></div>
+        }} className='relative cursor-pointer h-14 w-14 lg:h-20 lg:w-20 pr-2'>
+          <div className='h-28 w-0.5 -rotate-45 origin-top absolute bg-[#D3FD50]'></div>
+          <div className='h-28 w-0.5 right-0 rotate-45 origin-top absolute bg-[#D3FD50]'></div>
         </div>
       </div>
       <div className='py-20'>
@@ -90,7 +114,24 @@ const FullScreenNav = () => {
           </div>
         </div>
         <div className='link origin-top relative border-t-1 border-white'>
-          <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
+          <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Agence</h1>
+          <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
+            <div className='moveX flex items-center'>
+              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout Savoir</h2>
+              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/WIDESCAPE/WS---K72.ca---MenuThumbnail.jpg?w=640&h=290&s=c3eae0b44f029a1f39a666ffa3c2ca99" alt="" />
+              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout Savoir</h2>
+              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/PJC/Thumbnails/PJC_SiteK72_Thumbnail_640x290.jpg?w=640&h=290&s=ac50a70feaaa2601b3aacad544c6045b" alt="" />
+            </div>
+            <div className='moveX flex items-center'>
+              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout Savoir</h2>
+              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/WIDESCAPE/WS---K72.ca---MenuThumbnail.jpg?w=640&h=290&s=c3eae0b44f029a1f39a666ffa3c2ca99" alt="" />
+              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout Savoir</h2>
+              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/PJC/Thumbnails/PJC_SiteK72_Thumbnail_640x290.jpg?w=640&h=290&s=ac50a70feaaa2601b3aacad544c6045b" alt="" />
+            </div>
+          </div>
+        </div>
+        <div className='link origin-top relative border-t-1 border-white'>
+          <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Contact</h1>
           <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
             <div className='moveX flex items-center'>
               <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout voir</h2>
@@ -106,25 +147,8 @@ const FullScreenNav = () => {
             </div>
           </div>
         </div>
-        <div className='link origin-top relative border-t-1 border-white'>
-          <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
-          <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
-            <div className='moveX flex items-center'>
-              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout voir</h2>
-              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/WIDESCAPE/WS---K72.ca---MenuThumbnail.jpg?w=640&h=290&s=c3eae0b44f029a1f39a666ffa3c2ca99" alt="" />
-              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout voir</h2>
-              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/PJC/Thumbnails/PJC_SiteK72_Thumbnail_640x290.jpg?w=640&h=290&s=ac50a70feaaa2601b3aacad544c6045b" alt="" />
-            </div>
-            <div className='moveX flex items-center'>
-              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout voir</h2>
-              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/WIDESCAPE/WS---K72.ca---MenuThumbnail.jpg?w=640&h=290&s=c3eae0b44f029a1f39a666ffa3c2ca99" alt="" />
-              <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout voir</h2>
-              <img className='h-26 w-70 rounded-full shrink-0 object-cover' src="https://k72.ca/images/caseStudies/PJC/Thumbnails/PJC_SiteK72_Thumbnail_640x290.jpg?w=640&h=290&s=ac50a70feaaa2601b3aacad544c6045b" alt="" />
-            </div>
-          </div>
-        </div>
-        <div className='link origin-top relative border-t-1 border-white'>
-          <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Projects</h1>
+        <div className='link origin-top relative border-t-1 border-b-1 border-white'>
+          <h1 className='font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Blogs</h1>
           <div className='moveLink absolute text-black flex top-0 bg-[#D2FD50]'>
             <div className='moveX flex items-center'>
               <h2 className='whitespace-nowrap font-[font2] text-[8vw] text-center leading-[0.8] pt-4 uppercase'>Pour Tout voir</h2>

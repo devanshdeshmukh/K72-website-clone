@@ -21,7 +21,9 @@ const Projects = () => {
       </div>
       <div className='-mt-18'>
         {projects.map(function(elem){
-          return <ProjectCard image1={elem.image1} image2={elem.image2}/>
+          return <div className='w-full h-[500px] mb-2 flex gap-2'>
+          <ProjectCard image1={elem.image1} image2={elem.image2}/>
+          </div>
         })}
       </div>
     </div>

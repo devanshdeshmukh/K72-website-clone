@@ -35,13 +35,13 @@ const Projects = () => {
   })
 
   return (
-    <div>
+    <div className='lg:p-2 p-2 mb-[100vh]'>
       <div className=' pt-[45vh]'>
-        <h2 className='font-[font2] text-[13vw] uppercase'>Projets</h2>
+        <h2 className='font-[font2] lg:text-[13vw] text-7xl uppercase'>Projets</h2>
       </div>
-      <div className='-mt-18 lol'>
+      <div className='-lg:mt-18 lol'>
         {projects.map(function(elem, idx){
-          return <div key={idx} className='hero w-full h-[500px] mb-2 flex gap-2'>
+          return <div key={idx} className='hero w-full lg:h-[500px] mb-2 flex lg:flex-row flex-col lg:gap-2 gap-2'>
           <ProjectCard image1={elem.image1} image2={elem.image2}/>
           </div>
         })}

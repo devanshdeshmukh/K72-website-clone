@@ -80,7 +80,7 @@ const FullScreenNav = () => {
         </div>
       </div>
      <div ref={fullNavLinkRef} className='relative'>
-       <div className=" navlink flex w-full justify-between p-3 items-start">
+       <div className=" navlink flex w-full justify-between lg:p-3 p-1 items-start">
         <div className=''>
           <div className='w-30'>
             <svg className='w-full' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 44">
@@ -171,3 +171,4 @@ const FullScreenNav = () => {
 }
 
 export default FullScreenNav
+//4:9:36
